@@ -20,3 +20,8 @@ CREATE TABLE IF NOT EXISTS medicamentos (
     usuario_id INT,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
+INSERT INTO usuarios (nombre, correo, contraseña) VALUES
+('Ana López', 'ana.lopez@example.com', 'clave123'),
+('Carlos Ruiz', 'carlos.ruiz@example.com', '1234segura'),
+('María Torres', 'maria.torres@example.com', 'passmaria');
