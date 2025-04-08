@@ -1,11 +1,12 @@
 import pyodbc
 from Entidades import Medicamento
-from Utilidades import Configuracion
+from Utilidades.Configuracion import Configuracion
 
 class MedicamentosRepositorio:
 
     def Listar(self) -> list:
         try:
+            print("Cadena de conexión:", Configuracion.strConnection)  # Depuración
             conexion = pyodbc.connect(Configuracion.strConnection)
             consulta = """
                 SELECT id, nombre, dosis, frecuencia, horario_inicio, duracion, usuario_id
@@ -32,45 +33,3 @@ class MedicamentosRepositorio:
         except Exception as ex:
             print("Error al listar medicamentos:", str(ex))
             return []
-
-    def Agregar(self, medicamento: Medicamento) -> bool:
-        try:
-            conexion = pyodbc.connect(Configuracion.strConnection)
-            cursor = conexion.cursor()
-
-            consulta = """
-                INSERT INTO medicamentos (nombre, dosis, frecuencia, horario_inicio, duracion, usuario_id)
-                VALUES (?, ?, ?, ?, ?, ?)
-            """
-            cursor.execute(consulta,
-                medicamento.get_nombre(),
-                medicamento.get_dosis(),
-                medicamento.get_frecuencia(),
-                medicamento.get_horario_inicio(),
-                medicamento.get_duracion(),
-                medicamento.get_usuario_id()
-            )
-
-            conexion.commit()
-            cursor.close()
-            conexion.close()
-            return True
-        except Exception as ex:
-            print("Error al agregar medicamento:", str(ex))
-            return False
-
-    def Eliminar(self, id_medicamento: int) -> bool:
-        try:
-            conexion = pyodbc.connect(Configuracion.strConnection)
-            cursor = conexion.cursor()
-
-            consulta = "DELETE FROM medicamentos WHERE id = ?"
-            cursor.execute(consulta, id_medicamento)
-
-            conexion.commit()
-            cursor.close()
-            conexion.close()
-            return True
-        except Exception as ex:
-            print("Error al eliminar medicamento:", str(ex))
-            return False
