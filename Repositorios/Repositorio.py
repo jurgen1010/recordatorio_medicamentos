@@ -1,6 +1,6 @@
 import pyodbc
-from entidades.Medicamento import Medicamento
-from config.Configuracion import Configuracion
+from Entidades import Medicamento
+from Utilidades import Configuracion
 
 class MedicamentosRepositorio:
 
