@@ -4,5 +4,5 @@ class Configuracion:
         Server=localhost;
         Database=recordatorio_salud;
         PORT=3306;
-        user=user_ptyhon;
-        password=Clas3s1Nt2024_!""";
+        user=user_python;
+        password=12345!""";
