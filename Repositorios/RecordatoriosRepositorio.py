@@ -34,8 +34,7 @@ class RecordatoriosRepositorio:
             return []
 
     def Guardar(self, recordatorio: Recordatorio) -> str:
-        try:
-            # Conexión a la base de datos
+        try:            
             conexion = pyodbc.connect(Configuracion.Configuracion.strConnection)
             consulta = """
                 INSERT INTO recordatorios (medicamento_id, fecha_hora, estado)
@@ -61,8 +60,7 @@ class RecordatoriosRepositorio:
             return "Error al guardar el recordatorio"
 
     def Actualizar(self, recordatorio: Recordatorio) -> str:
-        try:
-            # Conexión a la base de datos
+        try:    
             conexion = pyodbc.connect(Configuracion.Configuracion.strConnection)
             consulta = """
                 UPDATE recordatorios
@@ -75,11 +73,9 @@ class RecordatoriosRepositorio:
                            recordatorio.fecha_hora, 
                            recordatorio.estado, 
                            recordatorio.id)
-            
-            # Confirmar los cambios
+                        
             conexion.commit()
-
-            # Cerrar cursor y conexión
+            
             cursor.close()
             conexion.close()
 
@@ -89,8 +85,7 @@ class RecordatoriosRepositorio:
             return "Error al actualizar el recordatorio"
 
     def Eliminar(self, id: int) -> str:
-        try:
-            # Conexión a la base de datos
+        try:           
             conexion = pyodbc.connect(Configuracion.Configuracion.strConnection)
             consulta = """
                 DELETE FROM recordatorios
@@ -98,11 +93,9 @@ class RecordatoriosRepositorio:
             """
             cursor = conexion.cursor()
             cursor.execute(consulta, id)
-            
-            # Confirmar los cambios
+                        
             conexion.commit()
-
-            # Cerrar cursor y conexión
+            
             cursor.close()
             conexion.close()
 
