@@ -146,8 +146,8 @@ INSERT INTO usuarios (nombre, correo, contraseña) VALUES
 ('María Torres', 'maria.torres@example.com', 'passmaria');
 
 INSERT INTO medicamentos (nombre, dosis, duracion, usuario_id, categoria_id) VALUES
-('Paracetamol', '500mg', 5, 1, 1),
-('Ibuprofeno', '400mg', 3, 1, 3),
+('Paracetamol', '500mg', 5, 2, 1),
+('Ibuprofeno', '400mg', 3, 2, 3),
 ('Amoxicilina', '250mg', 7, 2, 2),
 ('Vitamina C', '1000mg', 10, 3, 4);
 
@@ -164,3 +164,10 @@ INSERT INTO categorias (nombre) VALUES
 ('Anticoagulantes'),   -- Medicamentos para prevenir coágulos sanguíneos
 ('Anticonvulsivos'),   -- Medicamentos para tratar convulsiones
 ('Relajantes musculares'); -- Medicamentos para aliviar espasmos musculares
+
+INSERT INTO recordatorios (medicamento_id, fecha_hora, estado) VALUES
+(1, '2025-04-15 08:00:00', 'pendiente'), 
+(1, '2025-04-15 20:00:00', 'pendiente'), 
+(2, '2025-04-16 09:00:00', 'pendiente'), 
+(3, '2025-04-17 07:30:00', 'completado'), 
+(4, '2025-04-18 10:00:00', 'pendiente'); 
