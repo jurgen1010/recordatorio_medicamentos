@@ -144,12 +144,20 @@ INSERT INTO usuarios (nombre, correo, contraseña) VALUES
 ('Ana López', 'ana.lopez@example.com', 'clave123'),
 ('Carlos Ruiz', 'carlos.ruiz@example.com', '1234segura'),
 ('María Torres', 'maria.torres@example.com', 'passmaria');
+('Jurgen Perez', 'jurgen.perez@example.com', 'yuyo123');
 
 INSERT INTO medicamentos (nombre, dosis, duracion, usuario_id, categoria_id) VALUES
 ('Paracetamol', '500mg', 5, 2, 1),
 ('Ibuprofeno', '400mg', 3, 2, 3),
 ('Amoxicilina', '250mg', 7, 2, 2),
 ('Vitamina C', '1000mg', 10, 3, 4);
+
+INSERT INTO recordatorios (medicamento_id, fecha_hora, estado) VALUES
+(1, '2025-04-15 08:00:00', 'pendiente'), 
+(1, '2025-04-15 20:00:00', 'pendiente'), 
+(2, '2025-04-16 09:00:00', 'pendiente'), 
+(3, '2025-04-17 07:30:00', 'completado'), 
+(4, '2025-04-18 10:00:00', 'pendiente'); 
 
 INSERT INTO categorias (nombre) VALUES
 ('Analgésicos'),       -- Medicamentos para aliviar el dolor
@@ -165,12 +173,26 @@ INSERT INTO categorias (nombre) VALUES
 ('Anticonvulsivos'),   -- Medicamentos para tratar convulsiones
 ('Relajantes musculares'); -- Medicamentos para aliviar espasmos musculares
 
-INSERT INTO recordatorios (medicamento_id, fecha_hora, estado) VALUES
-(1, '2025-04-15 08:00:00', 'pendiente'), 
-(1, '2025-04-15 20:00:00', 'pendiente'), 
-(2, '2025-04-16 09:00:00', 'pendiente'), 
-(3, '2025-04-17 07:30:00', 'completado'), 
-(4, '2025-04-18 10:00:00', 'pendiente'); 
+INSERT INTO notificaciones (usuario_id, mensaje, fecha_hora, leido) VALUES
+(4, 'Recordatorio: Tomar Paracetamol a las 8:00 AM', '2025-04-15 08:00:00', FALSE),
+(2, 'Recordatorio: Tomar Ibuprofeno a las 9:00 AM', '2025-04-16 09:00:00', FALSE),
+(3, 'Recordatorio: Tomar Amoxicilina a las 7:30 AM', '2025-04-17 07:30:00', TRUE),
+(3, 'Recordatorio: Tomar Vitamina C a las 10:00 AM', '2025-04-18 10:00:00', FALSE),
+(2, 'Recordatorio: Consulta médica programada para el 20 de abril', '2025-04-20 15:00:00', FALSE);
+
+INSERT INTO historial_medicamentos (usuario_id, medicamento_id, fecha_hora) VALUES
+(4, 1, '2025-04-15 08:00:00'), 
+(2, 2, '2025-04-16 09:00:00'), 
+(3, 3, '2025-04-17 07:30:00'), 
+(4, 4, '2025-04-18 10:00:00'), 
+(2, 1, '2025-04-19 08:00:00');
+
+INSERT INTO doctores (nombre, especialidad, telefono, correo) VALUES
+('Dr. Juan Pérez', 'Cardiología', '3001234567', 'juan.perez@hospital.com'),
+('Dra. Ana Gómez', 'Pediatría', '3012345678', 'ana.gomez@hospital.com'),
+('Dr. Carlos Ruiz', 'Neurología', '3023456789', 'carlos.ruiz@hospital.com'),
+('Dra. María Torres', 'Dermatología', '3034567890', 'maria.torres@hospital.com'),
+('Dr. Jorge Ramírez', 'Medicina General', '3045678901', 'jorge.ramirez@hospital.com');
 
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (1, 1, '2025-04-01 09:00:00');
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (2, 2, '2025-04-02 10:30:00');
