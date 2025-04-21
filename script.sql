@@ -9,6 +9,13 @@ CREATE TABLE IF NOT EXISTS usuarios (
     contraseña VARCHAR(255) NOT NULL
 );
 
+--Tabla medicamentos con clave foranea dentro de Medicamentos
+CREATE TABLE IF NOT EXISTS categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE
+);
+
+
 -- Tabla de medicamentos con clave foránea a usuarios
 CREATE TABLE IF NOT EXISTS medicamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,12 +35,6 @@ CREATE TABLE IF NOT EXISTS recordatorios (
     fecha_hora DATETIME NOT NULL,
     estado ENUM('pendiente', 'completado') DEFAULT 'pendiente',
     FOREIGN KEY (medicamento_id) REFERENCES medicamentos(id) ON DELETE CASCADE
-);
-
---Tabla medicamentos con clave foranea dentro de Medicamentos
-CREATE TABLE IF NOT EXISTS categorias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL UNIQUE
 );
 
 --Tabla notificaciones con clave foranea a Usuarios
