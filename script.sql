@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS recetas (
     doctor_id INT NOT NULL,
     fecha DATETIME NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (doctor_id) REFERENCES doctores(id) ON DELETE SET NULL
+    FOREIGN KEY (doctor_id) REFERENCES doctores(id) ON DELETE CASCADE
 );
 
 --Tabla medicamentos recetas, relacion entre Recetas y Medicamentos
