@@ -14,22 +14,12 @@ CREATE TABLE IF NOT EXISTS medicamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     dosis VARCHAR(50),
-    frecuencia INT NOT NULL, -- cada cuántas horas se toma
-    horario_inicio DATETIME NOT NULL,
     duracion INT NOT NULL, -- duración del tratamiento en días
     usuario_id INT,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+    categoria_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE SET NULL
 );
-
--- Eliminar las columnas relacionadas con horarios
-ALTER TABLE medicamentos DROP COLUMN frecuencia;
-ALTER TABLE medicamentos DROP COLUMN horario_inicio;
-
--- Agregar la columna para la relación con categorías
-ALTER TABLE medicamentos ADD COLUMN categoria_id INT;
-
--- Agregar la clave foránea para la relación con la tabla categorias
-ALTER TABLE medicamentos ADD CONSTRAINT fk_categoria FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE SET NULL;
 
 --Tabla recordatorios con clave foranea a Medicamentos
 CREATE TABLE IF NOT EXISTS recordatorios (
