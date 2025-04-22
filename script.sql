@@ -134,21 +134,8 @@ CREATE TABLE IF NOT EXISTS contactos_emergencia (
 INSERT INTO usuarios (nombre, correo, contraseña) VALUES
 ('Ana López', 'ana.lopez@example.com', 'clave123'),
 ('Carlos Ruiz', 'carlos.ruiz@example.com', '1234segura'),
-('María Torres', 'maria.torres@example.com', 'passmaria');
+('María Torres', 'maria.torres@example.com', 'passmaria')
 ('Jurgen Perez', 'jurgen.perez@example.com', 'yuyo123');
-
-INSERT INTO medicamentos (nombre, dosis, duracion, usuario_id, categoria_id) VALUES
-('Paracetamol', '500mg', 5, 2, 1),
-('Ibuprofeno', '400mg', 3, 2, 3),
-('Amoxicilina', '250mg', 7, 2, 2),
-('Vitamina C', '1000mg', 10, 3, 4);
-
-INSERT INTO recordatorios (medicamento_id, fecha_hora, estado) VALUES
-(1, '2025-04-15 08:00:00', 'pendiente'), 
-(1, '2025-04-15 20:00:00', 'pendiente'), 
-(2, '2025-04-16 09:00:00', 'pendiente'), 
-(3, '2025-04-17 07:30:00', 'completado'), 
-(4, '2025-04-18 10:00:00', 'pendiente'); 
 
 INSERT INTO categorias (nombre) VALUES
 ('Analgésicos'),       -- Medicamentos para aliviar el dolor
@@ -164,19 +151,32 @@ INSERT INTO categorias (nombre) VALUES
 ('Anticonvulsivos'),   -- Medicamentos para tratar convulsiones
 ('Relajantes musculares'); -- Medicamentos para aliviar espasmos musculares
 
+INSERT INTO medicamentos (nombre, dosis, duracion, usuario_id, categoria_id) VALUES
+('Paracetamol', '500mg', 5, 2, 1),
+('Ibuprofeno', '400mg', 3, 2, 3),
+('Amoxicilina', '250mg', 7, 2, 2),
+('Vitamina C', '1000mg', 10, 3, 4);
+
+INSERT INTO recordatorios (medicamento_id, fecha_hora, estado) VALUES
+(13, '2025-04-15 08:00:00', 'pendiente'), 
+(13, '2025-04-15 20:00:00', 'pendiente'), 
+(16, '2025-04-16 09:00:00', 'pendiente'), 
+(15, '2025-04-17 07:30:00', 'completado'), 
+(14, '2025-04-18 10:00:00', 'pendiente');
+
 INSERT INTO notificaciones (usuario_id, mensaje, fecha_hora, leido) VALUES
-(4, 'Recordatorio: Tomar Paracetamol a las 8:00 AM', '2025-04-15 08:00:00', FALSE),
+(8, 'Recordatorio: Tomar Paracetamol a las 8:00 AM', '2025-04-15 08:00:00', FALSE),
 (2, 'Recordatorio: Tomar Ibuprofeno a las 9:00 AM', '2025-04-16 09:00:00', FALSE),
 (3, 'Recordatorio: Tomar Amoxicilina a las 7:30 AM', '2025-04-17 07:30:00', TRUE),
 (3, 'Recordatorio: Tomar Vitamina C a las 10:00 AM', '2025-04-18 10:00:00', FALSE),
 (2, 'Recordatorio: Consulta médica programada para el 20 de abril', '2025-04-20 15:00:00', FALSE);
 
 INSERT INTO historial_medicamentos (usuario_id, medicamento_id, fecha_hora) VALUES
-(4, 1, '2025-04-15 08:00:00'), 
-(2, 2, '2025-04-16 09:00:00'), 
-(3, 3, '2025-04-17 07:30:00'), 
-(4, 4, '2025-04-18 10:00:00'), 
-(2, 1, '2025-04-19 08:00:00');
+(8, 13, '2025-04-15 08:00:00'), 
+(2, 13, '2025-04-16 09:00:00'), 
+(3, 16, '2025-04-17 07:30:00'), 
+(8, 14, '2025-04-18 10:00:00'), 
+(2, 15, '2025-04-19 08:00:00');
 
 INSERT INTO doctores (nombre, especialidad, telefono, correo) VALUES
 ('Dr. Juan Pérez', 'Cardiología', '3001234567', 'juan.perez@hospital.com'),
@@ -188,41 +188,34 @@ INSERT INTO doctores (nombre, especialidad, telefono, correo) VALUES
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (1, 1, '2025-04-01 09:00:00');
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (2, 2, '2025-04-02 10:30:00');
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (3, 3, '2025-04-03 11:45:00');
-INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (4, 4, '2025-04-04 08:15:00');
-INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (5, 5, '2025-04-05 14:00:00');
+INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (8, 4, '2025-04-04 08:15:00');
 
 INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (1, 1);
 INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (1, 2);
 INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (2, 3);
 INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (3, 4);
-INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (4, 5);
 
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Farmacia Central', 'Calle 10 #45-23', '3011234567');
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Salud Total', 'Carrera 15 #33-90', '3027654321');
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Botica Popular', 'Av. 80 #50-10', '3031122334');
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Droguería Medellín', 'Calle 30 #70-50', '3049988776');
-INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Farmasanar', 'Carrera 45 #25-60', '3056677889');
 
 INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (1, 1, 12000.50, 10);
 INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (2, 2, 8500.00, 25);
 INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (3, 3, 15300.75, 15);
 INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (4, 4, 6400.00, 8);
-INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (5, 5, 9100.99, 30);
 
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (1, TRUE, 'America/Bogota');
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (2, FALSE, 'UTC');
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (3, TRUE, 'America/New_York');
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (4, TRUE, 'Europe/Madrid');
-INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (5, FALSE, 'Asia/Tokyo');
 
 INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (1, '08:00:00');
 INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (2, '12:00:00');
 INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (3, '18:00:00');
 INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (4, '20:30:00');
-INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (5, '07:15:00');
 
 INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (1, 'Laura Gómez', '3112233445', 'Hermana');
 INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (2, 'Carlos Pérez', '3123344556', 'Padre');
 INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (3, 'María Torres', '3134455667', 'Esposa');
 INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (4, 'Jorge Ramírez', '3145566778', 'Amigo');
-INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (5, 'Ana Castillo', '3156677889', 'Madre');
