@@ -190,30 +190,30 @@ INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (2, 2, '2025-04-02 10:
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (3, 3, '2025-04-03 11:45:00');
 INSERT INTO recetas (usuario_id, doctor_id, fecha) VALUES (8, 4, '2025-04-04 08:15:00');
 
-INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (1, 1);
-INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (1, 2);
-INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (2, 3);
-INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (3, 4);
+INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (1, 13);
+INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (1, 14);
+INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (2, 15);
+INSERT INTO medicamentos_recetas (receta_id, medicamento_id) VALUES (3, 16);
 
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Farmacia Central', 'Calle 10 #45-23', '3011234567');
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Salud Total', 'Carrera 15 #33-90', '3027654321');
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Botica Popular', 'Av. 80 #50-10', '3031122334');
 INSERT INTO farmacias (nombre, direccion, telefono) VALUES ('Droguería Medellín', 'Calle 30 #70-50', '3049988776');
 
-INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (1, 1, 12000.50, 10);
-INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (2, 2, 8500.00, 25);
-INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (3, 3, 15300.75, 15);
-INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (4, 4, 6400.00, 8);
+INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (1, 13, 12000.50, 10);
+INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (2, 14, 8500.00, 25);
+INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (3, 15, 15300.75, 15);
+INSERT INTO medicamentos_farmacias (farmacia_id, medicamento_id, precio, stock) VALUES (4, 16, 6400.00, 8);
 
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (1, TRUE, 'America/Bogota');
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (2, FALSE, 'UTC');
 INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (3, TRUE, 'America/New_York');
-INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (4, TRUE, 'Europe/Madrid');
+INSERT INTO configuraciones_usuarios (usuario_id, recibir_notificaciones, zona_horaria) VALUES (8, TRUE, 'Europe/Madrid');
 
-INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (1, '08:00:00');
-INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (2, '12:00:00');
-INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (3, '18:00:00');
-INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (4, '20:30:00');
+INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (13, '08:00:00');
+INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (14, '12:00:00');
+INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (15, '18:00:00');
+INSERT INTO horarios_medicamentos (medicamento_id, hora) VALUES (16, '20:30:00');
 
 INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (1, 'Laura Gómez', '3112233445', 'Hermana');
 INSERT INTO contactos_emergencia (usuario_id, nombre, telefono, relacion) VALUES (2, 'Carlos Pérez', '3123344556', 'Padre');
